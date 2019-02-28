@@ -1,4 +1,6 @@
 #python 3.2.5
+#python 3.5.2
+import random
 class Node:
 
     def __init__(self, v):
@@ -68,17 +70,11 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         pass # здесь будет ваш код
-
-n1 = Node(12)
-n2 = Node(55)
-n1.next = n2 # 12 -> 55
 s_list = LinkedList()
-s_list.add_in_tail(n1)
-s_list.add_in_tail(n2)
-s_list.add_in_tail(Node(128))
-s_list.add_in_tail(Node(0))
-s_list.add_in_tail(Node(12))
-s_list.add_in_tail(Node(45))
-s_list.delete(12)
-s_list.len()
+y = random.randint(1,10)
+for i in range(10):
+    y = random.randint(1,10)
+    s_list.add_in_tail(Node(y))
+s_list.delete(5)
+print("Длинна списка равна - ", s_list.len())
 s_list.print_all_nodes()
