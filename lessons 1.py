@@ -34,14 +34,19 @@ class LinkedList:
         return None
 
     def find_all(self, val):
-        return [] # здесь будет ваш код
+        list_val = []
+        node = self.head
+        while node is not None:
+            if (node.value == val):
+                list_val.append(val)
+            node = node.next
+        return list_val # здесь будет ваш код
 
     def delete(self, val, all=False):
         if(self.head == None):
             return
-        old = node = self.head
-        
-        while node is not None:
+        node = self.head       
+        while node.next is not None:
             if (node.value == val):
                 if (node.next == None):
                     self.tail = node
@@ -67,6 +72,16 @@ class LinkedList:
 
 
     def insert(self, afterNode, newNode):
+        if(self.head == None):
+            self.tail = self.head = Node(newNode)
+        node = self.head
+        while node.next is not None:
+            if(node.value == afterNode):
+                node.next = Node(newNode)
+                if(node.next.next == None):
+                    self.tail = node.next
+                break
+            node = node.next
         pass # здесь будет ваш код
 
 n1 = Node(12)
@@ -79,6 +94,8 @@ s_list.add_in_tail(Node(128))
 s_list.add_in_tail(Node(0))
 s_list.add_in_tail(Node(12))
 s_list.add_in_tail(Node(45))
-s_list.delete(12)
-s_list.len()
+s_list.delete(0)
+print("Длинна списка равна - ",s_list.len())
+print (s_list.find_all(12))
+s_list.insert(12,31)
 s_list.print_all_nodes()
