@@ -1,3 +1,6 @@
+import unittest
+import random
+
 class Node:
 
     def __init__(self, v):
@@ -24,6 +27,23 @@ class LinkedList:
             print(node.value)
             node = node.next
 
+    def find(self, val):
+        node = self.head
+        while node is not None:
+            if node.value == val:
+                return node
+            node = node.next
+        return None
+
+    def find_all(self, val):
+        list_val = []
+        node = self.head
+        while node is not None:
+            if (node.value == val):
+                list_val.append(val)
+            node = node.next
+        return list_val # здесь будет ваш код
+
     def delete(self, val, all=False):
         if(self.head == None):
                 return
@@ -47,6 +67,7 @@ class LinkedList:
                 node = node.next
             pass # здесь будет ваш код                        
                     
+
     def clean(self):
         self.__init__()
         pass # здесь будет ваш код
@@ -60,6 +81,7 @@ class LinkedList:
             node = node.next
             self.leng +=1
         return self.leng+1 # здесь будет ваш код
+
 
     def insert(self, afterNode, newNode):
         if(self.head == None):
@@ -77,31 +99,27 @@ class LinkedList:
             node = node.next
         pass # здесь будет ваш код
 
-n1 = Node(13)
-n2 = Node(55)
-n1.next = n2 # 12 -> 55
-s_list = LinkedList()
-s_list.add_in_tail(n1)
-s_list.add_in_tail(n2)
-s_list.add_in_tail(Node(128))
-s_list.add_in_tail(Node(2))
-s_list.add_in_tail(Node(1))
-s_list.add_in_tail(Node(14))
-s_list.add_in_tail(Node(55))
-s_list.add_in_tail(Node(45))
-s_list.add_in_tail(Node(15))
-s_list.add_in_tail(Node(55))
-s_list.add_in_tail(Node(278))
-s_list.delete(55, True)
-print("Длинна списка равна - ",s_list.len())
-print (s_list.find_all(45))
-s_list.print_all_nodes()
-s_list.clean()
-s_list.add_in_tail(Node("Новый пустой список"))
-s_list.print_all_nodes()
+class TestLinkedList(unittest.TestCase):
+    
+    def setUp(self):
+        s_list = LinkedList()
+        for i in range(10):
+            self.A = s_list.add_in_tail(Node(random.randint(1,10)))
+        self.B = s_list.add_in_tail(Node(123))
 
-    def test1.1():
-        s_list_test = LinkedList()
-        s_list_test.delete(13,False)
-        print(s_list_test())
-        
+        for i in range(12):
+            self.C = s_list.add_in_tail(Node("Hello"))
+
+
+    def test_find_all(self):
+        A.find_all()
+        B.find_all()
+        C.find_all()
+      
+    def test_delete(self):
+        A.delete(random.randint(1,10), False)
+        B.delete(random.randint(1,10), False)
+        C.delete(random.randint(1,10), False)
+
+if __name__ == '__main__':
+    unittest.main()
