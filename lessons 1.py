@@ -1,5 +1,3 @@
-#python 3.2.5
-#python 3.5.2
 class Node:
 
     def __init__(self, v):
@@ -44,26 +42,32 @@ class LinkedList:
         return list_val # здесь будет ваш код
 
     def delete(self, val, all=False):
+        leng = 0
         if(self.head == None):
                 return
         past = node = self.head   
-        if(all == False):
-            while node.next is not None:
+        if(all == False):  
+            while node is not None:
                 if (node.value == val):
+                    if(leng == 0):
+                        self.head = self.head.next
+                        return
                     if (node.next == None):
                         self.tail = node
                     past.next = node.next
                     break
                 past = node
                 node = node.next
-        else:
-            while node is not None:
+                leng += 1
+        else:  
+            while node != None:
                 if(node.next != None):
                     if(past.value == node.next.value):
                         node.next = node.next.next
                 else:
                     past = node = past.next
                 node = node.next
+                
             pass # здесь будет ваш код                        
                     
 
@@ -98,7 +102,7 @@ class LinkedList:
             node = node.next
         pass # здесь будет ваш код
 
-n1 = Node(13)
+n1 = Node(14)
 n2 = Node(55)
 n1.next = n2 # 12 -> 55
 s_list = LinkedList()
@@ -107,16 +111,16 @@ s_list.add_in_tail(n2)
 s_list.add_in_tail(Node(128))
 s_list.add_in_tail(Node(2))
 s_list.add_in_tail(Node(1))
-s_list.add_in_tail(Node(14))
+s_list.add_in_tail(Node(15))
 s_list.add_in_tail(Node(55))
 s_list.add_in_tail(Node(45))
 s_list.add_in_tail(Node(15))
 s_list.add_in_tail(Node(55))
 s_list.add_in_tail(Node(278))
-s_list.delete(55, True)
+s_list.delete(14, False)
 print("Длинна списка равна - ",s_list.len())
-print (s_list.find_all(45))
-s_list.print_all_nodes()
-s_list.clean()
-s_list.add_in_tail(Node("Новый пустой список"))
+print (s_list.find_all(55))
+s_list.insert(2, 38)
+s_list.add_in_tail(Node(321))
+print("Длинна списка равна - ",s_list.len())
 s_list.print_all_nodes()
