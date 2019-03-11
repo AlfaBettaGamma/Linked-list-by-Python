@@ -95,10 +95,10 @@ class LinkedList:
         while node.next is not None:
             if(node.value == afterNode):
                 node.next = Node(newNode)
-                if(node.next.next == None):
-                    self.tail = node.next
-                break
-            node = node.next
+                if(node.next.next != None):
+                    self.tail.next = node.next
+                    break
+            node = node.next   
         pass # здесь будет ваш код
 
 n1 = Node(14)
@@ -115,9 +115,15 @@ s_list.add_in_tail(Node(55))
 s_list.add_in_tail(Node(65))
 s_list.add_in_tail(Node(14))
 s_list.add_in_tail(Node(55))
+s_list.add_in_tail(Node(551))
 s_list.add_in_tail(Node(278))
 s_list.delete(14, True)
 print("Длинна списка равна - ",s_list.len())
-print (s_list.find_all(128))
+print (s_list.find_all(14))
+s_list.insert(2,"Вставка")
+print("Длинна списка равна - ",s_list.len())
 s_list.print_all_nodes()
+s_list_2 = LinkedList()
+s_list_2.insert(1,"первый элемент")
+s_list_2.print_all_nodes()
 
