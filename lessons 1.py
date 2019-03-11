@@ -59,15 +59,14 @@ class LinkedList:
                 past = node
                 node = node.next
                 leng += 1
-        else:  
-            while node != None:
-                if(node.next != None):
-                    if(past.value == node.next.value):
+        else:
+            while node is not None:
+                if node.next != None:
+                    if past.value == node.next.value and past.value == val:
                         node.next = node.next.next
                 else:
-                    past = node = past.next
-                node = node.next
-                
+                    past=node = past.next
+                node=node.next
             pass # здесь будет ваш код                        
                     
 
@@ -76,7 +75,7 @@ class LinkedList:
         pass # здесь будет ваш код
 
     def len(self):
-        self.leng =0
+        self.leng = 0
         if(self.head == None):
             return
         node = self.head
@@ -111,16 +110,14 @@ s_list.add_in_tail(n2)
 s_list.add_in_tail(Node(128))
 s_list.add_in_tail(Node(2))
 s_list.add_in_tail(Node(1))
-s_list.add_in_tail(Node(15))
+s_list.add_in_tail(Node(14))
 s_list.add_in_tail(Node(55))
-s_list.add_in_tail(Node(45))
-s_list.add_in_tail(Node(15))
+s_list.add_in_tail(Node(65))
+s_list.add_in_tail(Node(14))
 s_list.add_in_tail(Node(55))
 s_list.add_in_tail(Node(278))
-s_list.delete(14, False)
+s_list.delete(14, True)
 print("Длинна списка равна - ",s_list.len())
-print (s_list.find_all(55))
-s_list.insert(2, 38)
-s_list.add_in_tail(Node(321))
-print("Длинна списка равна - ",s_list.len())
+print (s_list.find_all(128))
 s_list.print_all_nodes()
+
