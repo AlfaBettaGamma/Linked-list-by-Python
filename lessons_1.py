@@ -1,5 +1,5 @@
 class Node:
- def __init__(self, v, next = None):
+ def __init__(self, v):
     self.value = v
     self.next = None
 
@@ -24,9 +24,13 @@ class LinkedList:
 
  def find(self, val):
     node = self.head
+    leng = 0
+    i = 0
     while node is not None:
      if node.value == val:
-        return node
+        i = leng
+        return i
+     leng += 1
      node = node.next
     return None
 
@@ -63,12 +67,13 @@ class LinkedList:
         leng += 1
     else:
      while node is not None:
-        if (node.next != None):
-         if past.value == node.next.value and past.value == val:
-            node.next = node.next.next
-        else:
-         past=node = past.next
-        node=node.next
+        if(node.value == val and leng == 0):
+            self.head = node.next
+        if(node.value == val):
+            past = node.next
+            print('first',node.value, leng)
+        leng += 1
+        node = node.next
      pass # здесь будет ваш код
 
  def clean(self):
@@ -87,13 +92,14 @@ class LinkedList:
     
  def insert(self, afterNode, newNode):
     if(afterNode == None or self.head == None):
-        self.head = Node(newNode, None)
+        self.head = Node(newNode)
+        return
     node = self.head
+    newN = Node(newNode)
     while node is not None:
         if(node.value == afterNode):
-            node.next = Node(newNode, node.next)
-            if(node.next.next == None):
-                self.tail = node.next
-            break
+            newN.next = node.next
+            node.next = newN
         node = node.next
     pass # здесь будет ваш код
+
