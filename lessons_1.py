@@ -24,15 +24,11 @@ class LinkedList:
 
  def find(self, val):
     node = self.head
-    leng = 0
-    i = 0
     while node is not None:
-     if node.value == val:
-        i = leng
-        return i
-     leng += 1
-     node = node.next
-    return None
+      if node.value == val:
+        return node
+        node = node.next
+      return None
 
  def find_all(self, val):
     list_val = []
