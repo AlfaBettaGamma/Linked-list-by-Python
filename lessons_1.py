@@ -70,7 +70,7 @@ class LinkedList:
         if(leng == 0 and node.value == val):
             self.head = node.next
             leng += 1
-        if(node.next != None):
+        if(node != None):
             if(node.next.value == val):
                 node.next = node.next.next
                 if(node.next.next == None):
