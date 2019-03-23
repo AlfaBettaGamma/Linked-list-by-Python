@@ -67,11 +67,14 @@ class LinkedList:
         leng += 1
     else:
      while node is not None:
-        if(node.value == val and leng == 0):
+        if(leng == 0 and node.value == val):
             self.head = node.next
-        if(node.value == val):
-            past = node.next
-            print('first',node.value, leng)
+            leng += 1
+        if(node.next != None):
+            if(node.next.value == val):
+                node.next = node.next.next
+                if(node.next.next == None):
+                    node = self.tail
         leng += 1
         node = node.next
      pass # здесь будет ваш код
@@ -102,4 +105,3 @@ class LinkedList:
             node.next = newN
         node = node.next
     pass # здесь будет ваш код
-
