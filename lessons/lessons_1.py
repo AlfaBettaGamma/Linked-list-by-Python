@@ -72,7 +72,6 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next == None):
-                            print('___', node.value)
                             self.tail = node
                 leng += 1
                 node = node.next
