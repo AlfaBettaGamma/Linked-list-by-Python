@@ -1,3 +1,5 @@
+import random
+
 class Node:
 
     def __init__(self, v):
@@ -104,4 +106,17 @@ class LinkedList:
             node = node.next
         pass # здесь будет ваш код
 
-    def test_find_all():
+    def test_find_all(self):
+        test1 = LinkedList()
+        for i in range(100):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+
+        for j in range(10):
+            y = random.randint(0,10)
+            print(test1.find_all(y))
+        test1.print_all_nodes()
+    
+s = LinkedList()
+s.test_find_all()
+s.print_all_nodes()
