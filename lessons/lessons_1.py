@@ -41,8 +41,8 @@ class LinkedList:
         while node is not None:
             if (node.value == val):
                 list_val.append(leng)
-        leng += 1
-        node = node.next
+            leng += 1
+            node = node.next
         return list_val # здесь будет ваш код
 
     def delete(self, val, all=False):
@@ -68,15 +68,16 @@ class LinkedList:
                 if(leng == 0 and node.value == val):
                     self.head = node.next
                     leng += 1
-                if(node != None):
+                if(node.next != None):
                     if(node.next.value == val):
                         node.next = node.next.next
-                        if(node.next.next == None):
-                            node = self.tail
+                        if(node.next == None):
+                            print('___', node.value)
+                            self.tail = node
                 leng += 1
                 node = node.next
             pass # здесь будет ваш код
-
+            
     def clean(self):
         self.__init__()
         pass # здесь будет ваш код
