@@ -36,14 +36,12 @@ class LinkedList:
 
     def find_all(self, val):
         list_val = []
-        leng = 0
         if(self.head == None):
             return
         node = self.head
         while node is not None:
             if (node.value == val):
-                list_val.append(leng)
-            leng += 1
+                list_val.append(node.value)
             node = node.next
         return list_val # здесь будет ваш код
 
