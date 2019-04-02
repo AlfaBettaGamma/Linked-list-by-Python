@@ -106,7 +106,7 @@ class LinkedList:
             node = node.next
         pass # здесь будет ваш код
 
-    def test_find_all(self):
+    def test1_find_all(self):
         test1 = LinkedList()
         for i in range(100):
             y = random.randint(0,10)
@@ -115,8 +115,70 @@ class LinkedList:
         for j in range(10):
             y = random.randint(0,10)
             print(test1.find_all(y))
-        test1.print_all_nodes()
-    
-s = LinkedList()
-s.test_find_all()
-s.print_all_nodes()
+            
+    def test2_find_all(self): 
+        test1 = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            print(test1.find_all(y))
+
+    def test1_del_false(self):
+        test1 = LinkedList()
+        for i in range(10):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+        for i in range(10):
+            y = random.randint(0,10)
+            len_1 = test1.len()
+            test1.delete(y, False)
+            len_2 = test1.len()
+            test1.print_all_nodes()
+            if(len_1 == len_2):
+                print("Удаления не было(((")
+            else:
+                print("Удаление прошло успешно)")
+
+    def test_del_true(self):
+        test1 = LinkedList()
+        for i in range(10):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+        for i in range(10):
+            y = random.randint(0,10)
+            len_1 = test1.len()
+            test1.delete(y, True)
+            len_2 = test1.len()
+            if(len_1 == len_2):
+                print("Удаления не было(((")
+            else:
+                print("Удаление прошло успешно)")
+            test1.print_all_nodes()
+
+    def test_clean():
+        test1 = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+        test1.clean()
+        if(test1 != None):
+            print('clean not work')
+
+    def test_len():
+        test1 = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+        print(test1.len())
+        test1.clean()
+        print(test1.len())
+
+    def test_insert(self):
+        test1 = LinkedList()
+        v = "Вставка"
+        for i in range(10):
+            y = random.randint(0,10)
+            test1.add_in_tail(Node(y))
+        for i in range(20):
+            y = random.randint(0,10)
+            test1.insert(y, v)
+            test1.print_all_nodes()
