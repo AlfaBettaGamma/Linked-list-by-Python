@@ -41,7 +41,7 @@ class LinkedList:
         node = self.head
         while node is not None:
             if (node.value == val):
-                list_val.append(node.value)
+                list_val.append(node)
             node = node.next
         return list_val # здесь будет ваш код
 
@@ -122,7 +122,7 @@ class LinkedList:
             y = random.randint(0,10)
             print(test1.find_all(y))
 
-    def test1_del_false(self):
+    def test_del_false(self):
         test1 = LinkedList()
         for i in range(10):
             y = random.randint(0,10)
