@@ -50,17 +50,20 @@ class LinkedList:
         past = node = self.head   
         if(all == False):  
             while node is not None:
-                if (node.value == val):
-                    if(leng == 0):
-                        self.head = self.head.next
-                        return
-                    if (node.next == None):
-                        self.tail = node
-                    past.next = node.next
+                if(leng == 0 and node.value == val):
+                    self.head = node.next
+                    leng += 1
                     break
-                past = node
-                node = node.next
-                leng += 1
+                if(node.next != None):
+                    if(node.next.value == val):
+                        node.next = node.next.next
+                        if(node.next == None):
+                            self.tail = node
+                        break
+                    else:
+                        node = node.next
+                else:
+                    node = node.next
         else:
             while node is not None:
                 if(leng == 0 and node.value == val):
