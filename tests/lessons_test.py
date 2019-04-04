@@ -107,20 +107,24 @@ class LinkedList:
         pass # здесь будет ваш код
 
     def test1_find_all(self):
-        test1 = LinkedList()
+        test = LinkedList()
         for i in range(100):
             y = random.randint(0,10)
-            test1.add_in_tail(Node(y))
+            test.add_in_tail(Node(y))
 
         for j in range(10):
             y = random.randint(0,10)
-            print(test1.find_all(y))
+            print(test.find_all(y))
             
     def test2_find_all(self): 
-        test1 = LinkedList()
+        test = LinkedList()
         for j in range(10):
             y = random.randint(0,10)
-            print(test1.find_all(y))
+            test.add_in_tail(Node(y))
+        test.clean()
+        for j in range(10):
+            y = random.randint(0,10)
+            print(test.find_all(y))
 
     def test_del_false(self):
         test1 = LinkedList()
