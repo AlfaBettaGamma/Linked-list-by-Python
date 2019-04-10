@@ -140,14 +140,14 @@ class LinkedList:
             len_1 = test1.len()
             test1.delete(y, False)
             len_2 = test1.len()
-            if(len_2 == 1):
+            if(test1.len() == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
             if(len_1 == len_2):
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == 0):
+            if(test1.len() == 0):
                 print("Список пуст!")
                 break
                 
@@ -162,14 +162,14 @@ class LinkedList:
             len_1 = test1.len()
             test1.delete(y, True)
             len_2 = test1.len()
-            if(len_2 == 1):
+            if(test1.len() == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
             if(len_1 == len_2):
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == 0):
+            if(test1.len() == 0):
                 print("Список пуст!", len_2)
                 break
             test1.print_all_nodes()
