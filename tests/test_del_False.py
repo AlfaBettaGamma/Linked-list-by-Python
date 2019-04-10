@@ -24,25 +24,6 @@ class LinkedList:
             print(node.value)
             node = node.next
 
-    def find(self, val):
-        node = self.head
-        while node is not None:
-            if node.value == val:
-                return node
-            node = node.next
-        return None
-
-    def find_all(self, val):
-        list_val = []
-        if(self.head == None):
-            return
-        node = self.head
-        while node is not None:
-            if (node.value == val):
-                list_val.append(node)
-            node = node.next
-        return list_val # здесь будет ваш код
-
     def delete(self, val, all=False):
         leng = 0
         if(self.head == None):
