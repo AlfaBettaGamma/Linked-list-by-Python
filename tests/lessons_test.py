@@ -189,3 +189,4 @@ class LinkedList:
             y = random.randint(0,10)
             test1.insert(y, v)
             test1.print_all_nodes()
+            
