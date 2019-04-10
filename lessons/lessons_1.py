@@ -87,7 +87,7 @@ class LinkedList:
     def len(self):
         self.leng = 0
         if(self.head == None):
-            return leng
+            return self.leng
         node = self.head
         while node is not None:
             node = node.next
