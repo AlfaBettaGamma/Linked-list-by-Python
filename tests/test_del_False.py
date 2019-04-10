@@ -70,12 +70,12 @@ class LinkedList:
     def len(self):
         self.leng = 0
         if(self.head == None):
-            return
+            return leng
         node = self.head
-        while node.next is not None:
+        while node is not None:
             node = node.next
             self.leng +=1
-        return self.leng+1 # здесь будет ваш код 
+        return self.leng # здесь будет ваш код 
 
     def test_del_false(self):
         test1 = LinkedList()
@@ -85,9 +85,9 @@ class LinkedList:
             
         for i in range(90):
             y = random.randint(0,10)
-            len_1 = test1.len()-1
+            len_1 = test1.len()
             test1.delete(y, False)
-            len_2 = test1.len()-1
+            len_2 = test1.len()
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
@@ -107,9 +107,9 @@ class LinkedList:
             test1.add_in_tail(Node(y))
         for i in range(10):
             y = random.randint(0,10)
-            len_1 = test1.len()-1
+            len_1 = test1.len()
             test1.delete(y, True)
-            len_2 = test1.len()-1
+            len_2 = test1.len()
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()

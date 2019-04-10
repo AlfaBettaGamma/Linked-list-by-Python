@@ -87,12 +87,12 @@ class LinkedList:
     def len(self):
         self.leng = 0
         if(self.head == None):
-            return
+            return leng
         node = self.head
-        while node.next is not None:
+        while node is not None:
             node = node.next
             self.leng +=1
-        return self.leng+1 # здесь будет ваш код 
+        return self.leng # здесь будет ваш код 
 
     def insert(self, afterNode, newNode):
         if(afterNode == None or self.head == None):
