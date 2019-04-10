@@ -85,9 +85,9 @@ class LinkedList:
             
         for i in range(90):
             y = random.randint(0,10)
-            len_1 = test1.len()
+            len_1 = test1.len()-1
             test1.delete(y, False)
-            len_2 = test1.len()
+            len_2 = test1.len()-1
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
@@ -95,10 +95,11 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == None):
+            if(len_2 == 0):
                 print("Список пуст!")
                 break
                 
+
     def test_del_true(self):
         test1 = LinkedList()
         for i in range(10):
@@ -106,9 +107,9 @@ class LinkedList:
             test1.add_in_tail(Node(y))
         for i in range(10):
             y = random.randint(0,10)
-            len_1 = test1.len()
+            len_1 = test1.len()-1
             test1.delete(y, True)
-            len_2 = test1.len()
+            len_2 = test1.len()-1
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
@@ -116,7 +117,7 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == None):
-                print("Список пуст!")
+            if(len_2 == 0):
+                print("Список пуст!", len_2)
                 break
             test1.print_all_nodes()

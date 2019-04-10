@@ -60,7 +60,7 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next == None):
-                            self.tail = node
+                            self.head = node
                         break
                     else:
                         node = node.next
@@ -87,14 +87,14 @@ class LinkedList:
         pass # здесь будет ваш код
 
     def len(self):
-        self.leng = 0
+        leng = 0
         if(self.head == None):
             return
         node = self.head
         while node.next is not None:
             node = node.next
-            self.leng +=1
-        return self.leng+1 # здесь будет ваш код 
+            leng +=1
+        return leng+1 # здесь будет ваш код 
 
     def insert(self, afterNode, newNode):
         if(afterNode == None or self.head == None):
@@ -137,9 +137,9 @@ class LinkedList:
             
         for i in range(90):
             y = random.randint(0,10)
-            len_1 = test1.len()
+            len_1 = test1.len()-1
             test1.delete(y, False)
-            len_2 = test1.len()
+            len_2 = test1.len()-1
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
@@ -147,7 +147,7 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == None):
+            if(len_2 == 0):
                 print("Список пуст!")
                 break
                 
@@ -159,9 +159,9 @@ class LinkedList:
             test1.add_in_tail(Node(y))
         for i in range(10):
             y = random.randint(0,10)
-            len_1 = test1.len()
+            len_1 = test1.len()-1
             test1.delete(y, True)
-            len_2 = test1.len()
+            len_2 = test1.len()-1
             if(len_2 == 1):
                 print("В списке один элемент")
             test1.print_all_nodes()
@@ -169,8 +169,8 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(len_2 == None):
-                print("Список пуст!")
+            if(len_2 == 0):
+                print("Список пуст!", len_2)
                 break
             test1.print_all_nodes()
 
@@ -202,3 +202,6 @@ class LinkedList:
             y = random.randint(0,10)
             test1.insert(y, v)
             test1.print_all_nodes()
+
+s_test = LinkedList()
+s_test.test_del_false()
