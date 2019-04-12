@@ -147,8 +147,8 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.len() == 0):
-                print("Список пуст!")
+            if(test1.head == None and test1.len() == 0):
+                print("Список пустой")
                 break
                 
 
@@ -169,12 +169,11 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.len() == 0):
-                print("Список пуст!", len_2)
+            if(test1.head == None and test1.len() == 0):
+                print("Список пустой")
                 break
-            test1.print_all_nodes()
 
-    def test_clean():
+    def test_clean(self):
         test1 = LinkedList()
         for j in range(10):
             y = random.randint(0,10)
@@ -183,13 +182,15 @@ class LinkedList:
         if(test1 != None):
             print('clean not work')
 
-    def test_len():
+    def test_len(self):
         test1 = LinkedList()
         for j in range(10):
             y = random.randint(0,10)
             test1.add_in_tail(Node(y))
         print(test1.len())
         test1.clean()
+        if(test1.head == None and test1.len() == 0):
+            print("Список пустой")
         print(test1.len())
 
     def test_insert(self):
