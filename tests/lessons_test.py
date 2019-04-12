@@ -204,5 +204,3 @@ class LinkedList:
             test1.insert(y, v)
             test1.print_all_nodes()
 
-s_test = LinkedList()
-s_test.test_del_false()
