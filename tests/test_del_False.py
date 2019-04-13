@@ -95,7 +95,7 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.head == None and test1.len() == 0):
+            if(test1.head is None and test1.len() == 0 and self.tail is None):
                 print("Список пустой")
                 break
                 
@@ -117,6 +117,6 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.head == None and test1.len() == 0):
+            if(test1.head is None and test1.len() == 0 and self.tail is None):
                 print("Список пустой")
                 break
