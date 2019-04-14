@@ -1,3 +1,4 @@
+
 import random
 
 class Node:
@@ -202,6 +203,17 @@ class LinkedList:
             y = random.randint(0,10)
             test1.insert(y, v)
             test1.print_all_nodes()
+            
+    def test1_del_false(self):
+        test1 = LinkedList()
+        test1.add_in_tail(Node(9))
+        test1.len()
+        if(test1.len() == 1):
+            print('В списке один элемент!')
+        test1.delete(9)
+        if(test1.head is None and test1.len() == 0 and self.tail is None):
+            print("Список пустой")
+
 
 test = LinkedList()
-test.test_del_false()
+test.test1_del_false()

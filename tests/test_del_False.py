@@ -75,30 +75,7 @@ class LinkedList:
         while node is not None:
             node = node.next
             self.leng +=1
-        return self.leng # здесь будет ваш код 
-
-    def test_del_false(self):
-        test1 = LinkedList()
-        for i in range(10):
-            y = random.randint(0,10)
-            test1.add_in_tail(Node(y))
-            
-        for i in range(90):
-            y = random.randint(0,10)
-            len_1 = test1.len()
-            test1.delete(y, False)
-            len_2 = test1.len()
-            if(test1.len() == 1):
-                print("В списке один элемент")
-            test1.print_all_nodes()
-            if(len_1 == len_2):
-                print("Удаления не было(((")
-            else:
-                print("Удаление прошло успешно)")
-            if(test1.head is None and test1.len() == 0 and self.tail is None):
-                print("Список пустой")
-                break
-                
+        return self.leng # здесь будет ваш код              
 
     def test_del_true(self):
         test1 = LinkedList()
@@ -120,3 +97,13 @@ class LinkedList:
             if(test1.head is None and test1.len() == 0 and self.tail is None):
                 print("Список пустой")
                 break
+
+    def test1_del_false(self):
+        test1 = LinkedList()
+        test1.add_in_tail(Node(9))
+        test1.len()
+        if(test1.len() == 1):
+            print('В списке один элемент!')
+        test1.delete(9)
+        if(test1.head is None and test1.len() == 0 and self.tail is None):
+            print("Список пустой")
