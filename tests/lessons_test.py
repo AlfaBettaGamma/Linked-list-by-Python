@@ -214,6 +214,3 @@ class LinkedList:
         if(test1.head is None and test1.len() == 0 and self.tail is None):
             print("Список пустой")
 
-
-test = LinkedList()
-test.test1_del_false()
