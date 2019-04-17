@@ -61,25 +61,19 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next == None):
-                            self.head = node
+                            self.head = None
                         break
-                    else:
-                        node = node.next
-                else:
                     node = node.next
         else:
             while node is not None:
-                if(leng == 0 and node.value == val):
-                    self.head = node.next
-                    leng += 1
                 if(node.next != None):
                     if(node.next.value == val):
                         node.next = node.next.next
-                        if(node.next == None):
-                            self.tail = node
-                    else:
-                        node = node.next
-                else:
+                        if(node.next is None):
+                            self.head = None
+                    if(leng == 0 and node.value == val):
+                        self.head = node.next
+                        leng += 1
                     node = node.next
             pass # здесь будет ваш код
             
@@ -109,6 +103,8 @@ class LinkedList:
                 node.next = newN
             node = node.next
         pass # здесь будет ваш код
+
+class my_test:
 
     def test1_find_all(self):
         test = LinkedList()
@@ -147,7 +143,7 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.head is None and test1.len() == 0 and self.tail is None):
+            if(test1.head is None and test1.len() == 0):
                 print("Список пустой")
                 break
                 
@@ -157,7 +153,7 @@ class LinkedList:
         for i in range(10):
             y = random.randint(0,10)
             test1.add_in_tail(Node(y))
-        for i in range(10):
+        for i in range(50):
             y = random.randint(0,10)
             len_1 = test1.len()
             test1.delete(y, True)
@@ -169,7 +165,7 @@ class LinkedList:
                 print("Удаления не было(((")
             else:
                 print("Удаление прошло успешно)")
-            if(test1.head is None and test1.len() == 0 and self.tail is None):
+            if(test1.head is None and test1.len() == 0):
                 print("Список пустой")
                 break
 
@@ -179,8 +175,9 @@ class LinkedList:
             y = random.randint(0,10)
             test1.add_in_tail(Node(y))
         test1.clean()
-        if(test1 != None):
-            print('clean not work')
+        if(test1.head is None and test1.len() == 0 and test1.tail is None):
+            print("Список пустой")
+
 
     def test_len(self):
         test1 = LinkedList()
@@ -189,7 +186,7 @@ class LinkedList:
             test1.add_in_tail(Node(y))
         print(test1.len())
         test1.clean()
-        if(test1.head is None and test1.len() == 0 and self.tail is None):
+        if(test1.head is None and test1.len() == 0 and test1.tail is None):
             print("Список пустой")
         print(test1.len())
 
@@ -205,12 +202,21 @@ class LinkedList:
             test1.print_all_nodes()
             
     def test1_del_false(self):
+        node = self.head
         test1 = LinkedList()
         test1.add_in_tail(Node(9))
         test1.len()
+        node = test1.head
         if(test1.len() == 1):
-            print('В списке один элемент!')
+            print('В списке один элемент!', test1.head, self.tail)
+        while node is not None:
+            print("+++++++" ,node.value)
+            if(self.tail == None):
+                print("Этот узел последний", test1.tail.value)
+            node = node.next
         test1.delete(9)
-        if(test1.head is None and test1.len() == 0 and self.tail is None):
-            print("Список пустой")
+        if(test1.head is None and test1.len() == 0):
+            print("Список пустой", test1.head, test1.tail.value)
 
+test1 = my_test()
+test1.test1_del_false()

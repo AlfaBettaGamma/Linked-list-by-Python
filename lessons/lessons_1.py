@@ -58,25 +58,19 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next == None):
-                            self.tail = node
+                            self.head = None
                         break
-                    else:
-                        node = node.next
-                else:
                     node = node.next
         else:
             while node is not None:
-                if(leng == 0 and node.value == val):
-                    self.head = node.next
-                    leng += 1
                 if(node.next != None):
                     if(node.next.value == val):
                         node.next = node.next.next
-                        if(node.next == None):
-                            self.tail = node
-                    else:
-                        node = node.next
-                else:
+                        if(node.next is None):
+                            self.head = None
+                    if(leng == 0 and node.value == val):
+                        self.head = node.next
+                        leng += 1
                     node = node.next
             pass # здесь будет ваш код
             
