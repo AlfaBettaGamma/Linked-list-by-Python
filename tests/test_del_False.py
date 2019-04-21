@@ -47,37 +47,42 @@ class LinkedList:
 
     def delete(self, val, all=False):
         leng = 0
-        if(self.head == None):
-            return
-        past = node = self.head   
-        if(all == False):  
-            while node is not None:
+        if(self.head is None):
+            return print("список пуст")
+        node = self.head   
+        if(all is False):  
+            while node != None:
                 if(leng == 0 and node.value == val):
                     self.head = node.next
-                    self.tail = node.next
                     leng += 1
                     break
                 if(node.next != None):
                     if(node.next.value == val):
                         node.next = node.next.next
-                        if(node.next == None):
-                            self.head = None
+                        if(node.next is None):
                             self.tail = None
                         break
                     node = node.next
-        else:
-            while node is not None:
+                else:
+                    self.head = None
+                    self.tail = None
+        elif(all is True):
+            while node != None:
                 if(node.next != None):
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.head = None
                             self.tail = None
-                    if(leng == 0 and node.value == val):
+                    elif(leng == 0 and node.value == val):
                         self.head = node.next
-                        self.tail = node.next
                         leng += 1
-                    node = node.next
+                    else:
+                        node = node.next
+                else:
+                    if(node.value == val):
+                        self.head = None
+                        self.tail = None
+                    break
             pass # здесь будет ваш код
             
     def clean(self):
