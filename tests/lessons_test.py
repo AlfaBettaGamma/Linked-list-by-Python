@@ -198,5 +198,3 @@ class my_test:
             test1.insert(y, v)
             test1.print_all_nodes()
         
-test = my_test()
-test.test_del_true()
