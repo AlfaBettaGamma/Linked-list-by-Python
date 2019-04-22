@@ -157,7 +157,10 @@ class my_test:
         test.add_in_tail(Node(1))
         test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
-        test.print_all_nodes()
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
         test.delete(2, True)
         if(test.head is None and test.tail is None and test.len() == 0):
             print("Список пустой!")
@@ -197,4 +200,3 @@ class my_test:
             y = random.randint(0,10)
             test1.insert(y, v)
             test1.print_all_nodes()
-        
