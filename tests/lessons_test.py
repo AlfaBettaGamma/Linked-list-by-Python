@@ -167,7 +167,58 @@ class my_test:
         else:
             print('Список после удаления')
             test.print_all_nodes()
-            
+        
+    def test_del_true1(self):
+        test = LinkedList()
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(6))
+        test.add_in_tail(Node(2))
+        len_1 = test.len()
+        test.delete(2, True)
+        len_2 = test.len()
+        len_del = len_1 - len_2
+        if(len_del == len_1 and test.head is None and test.len() == 0 and test.tail is None):
+            print('Список пустой. Удаленно было ',len_del ,'элементов.')
+        else:
+            print('В списке осталось - ', len_2,'элементов.' , 'Удаленно было - ', len_del, 'элементов.')
+
+    def test_del_true2(self):
+        test = LinkedList()
+        test.add_in_tail(Node(0))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))        
+        y = 2
+        test.print_all_nodes()
+        len_1 = test.len()
+        for i in range(test.len()):
+            if(y == test.head.value and test.head.next is None):
+                print('Удалятся будет последний узел')
+        test.delete(y, True)
+        len_2 = test.len()
+        len_del = len_1 - len_2
+        for i in range(test.len()):
+            if (y != test.head.value):
+                print('Удаление последнего узла прошло успешно!')
+                break
+        test.print_all_nodes()
+        
+        print('Удаленно (',len_del,' элементов). Узла с значением -', y)
+
+
 
     def test_clean(self):
         test1 = LinkedList()
