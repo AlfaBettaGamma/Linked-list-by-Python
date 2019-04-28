@@ -51,6 +51,9 @@ class LinkedList:
         if(all is False):  
             while node != None:
                 if(leng == 0 and node.value == val):
+                    if(node.next is None):
+                        self.head = None
+                        self.tail = None
                     self.head = node.next
                     leng += 1
                     break
@@ -58,7 +61,10 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
+                            node = None
+                            if(self.head is None and leng == 0):
+                                self.tail = None
+                            self.tail = self.head.next
                         break
                     node = node.next
                 else:
@@ -67,15 +73,16 @@ class LinkedList:
         elif(all is True):
             while node != None:
                 if(node.next != None):
-                    if(node.next.value == val):
+                    if(leng == 0 and node.value is val):
+                        node = node.next
+                    elif(node.next.value is val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
-                    elif(leng == 0 and node.value == val):
-                        self.head = node.next
-                        leng += 1
+                            node = None
+                            self.tail = self.head.next
                     else:
                         node = node.next
+                        leng += 1
                 else:
                     if(node.value == val):
                         self.head = None

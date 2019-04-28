@@ -54,6 +54,9 @@ class LinkedList:
         if(all is False):  
             while node != None:
                 if(leng == 0 and node.value == val):
+                    if(node.next is None):
+                        self.head = None
+                        self.tail = None
                     self.head = node.next
                     leng += 1
                     break
@@ -61,7 +64,10 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
+                            node = None
+                            if(self.head is None and leng == 0):
+                                self.tail = None
+                            self.tail = self.head.next
                         break
                     node = node.next
                 else:
@@ -70,15 +76,16 @@ class LinkedList:
         elif(all is True):
             while node != None:
                 if(node.next != None):
-                    if(node.next.value == val):
+                    if(leng == 0 and node.value is val):
+                        node = node.next
+                    elif(node.next.value is val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
-                    elif(leng == 0 and node.value == val):
-                        self.head = node.next
-                        leng += 1
+                            node = None
+                            self.tail = self.head.next
                     else:
                         node = node.next
+                        leng += 1
                 else:
                     if(node.value == val):
                         self.head = None
@@ -151,17 +158,13 @@ class my_test:
 
     def test_del_true(self):
         test = LinkedList()
+        test.add_in_tail(Node(1))
         test.add_in_tail(Node(0))
-        test.add_in_tail(Node(1))
-        test.add_in_tail(Node(1))
-        test.add_in_tail(Node(1))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
         test.delete(2, True)
+        test.print_all_nodes()
         if(test.head is None and test.tail is None and test.len() == 0):
             print("Список пустой!")
         else:
@@ -170,12 +173,6 @@ class my_test:
         
     def test_del_true1(self):
         test = LinkedList()
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
         test.add_in_tail(Node(2))
         test.add_in_tail(Node(6))
@@ -194,13 +191,8 @@ class my_test:
         test.add_in_tail(Node(0))
         test.add_in_tail(Node(1))
         test.add_in_tail(Node(1))
-        test.add_in_tail(Node(1))
         test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))
-        test.add_in_tail(Node(2))        
+        test.add_in_tail(Node(2))       
         y = 2
         test.print_all_nodes()
         len_1 = test.len()
@@ -218,7 +210,21 @@ class my_test:
         
         print('Удаленно (',len_del,' элементов). Узла с значением -', y)
 
-
+    def test_del_true3(self):
+        test = LinkedList()
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        len_1 = test.len()
+        test.delete(3, True)
+        len_2 = test.len()
+        if (len_1 != len_2):
+            print('Общее количество элементов до удаления - ', len_1, 'оставшееся количество элементов - ', len_2)
+        if(test.len() == 2):
+            print(test.head.value, test.tail.value)        
 
     def test_clean(self):
         test1 = LinkedList()
