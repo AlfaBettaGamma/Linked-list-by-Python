@@ -38,7 +38,7 @@ class LinkedList:
     def find_all(self, val):
         list_val = []
         if(self.head == None):
-            return
+            return list_val
         node = self.head
         while node is not None:
             if (node.value == val):
@@ -127,7 +127,6 @@ class my_test:
         for i in range(100):
             y = random.randint(0,10)
             test.add_in_tail(Node(y))
-
         for j in range(10):
             y = random.randint(0,10)
             print(test.find_all(y))
@@ -139,7 +138,7 @@ class my_test:
             test.add_in_tail(Node(y))
         test.clean()
         n = 1
-        for j in range(10):
+        for j in range(1):
             y = random.randint(0,10)
             print(n,' - ' ,test.find_all(y))
             n += 1
