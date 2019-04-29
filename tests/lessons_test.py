@@ -110,7 +110,9 @@ class LinkedList:
     def insert(self, afterNode, newNode):
         if(afterNode == None or self.head == None):
             self.head = Node(newNode)
-            return
+        else:
+            self.tail.next = Node(newNode)
+        self.tail = Node(newNode)
         node = self.head
         newN = Node(newNode)
         while node is not None:
@@ -226,33 +228,45 @@ class my_test:
             print(test.head.value, test.tail.value)        
 
     def test_clean(self):
-        test1 = LinkedList()
+        test = LinkedList()
         for j in range(10):
             y = random.randint(0,10)
-            test1.add_in_tail(Node(y))
-        test1.clean()
-        if(test1.head is None and test1.len() == 0 and test1.tail is None):
+            test.add_in_tail(Node(y))
+        test.clean()
+        if(test.head is None and test.len() == 0 and test.tail is None):
             print("Список пустой")
 
 
     def test_len(self):
-        test1 = LinkedList()
+        test = LinkedList()
         for j in range(10):
             y = random.randint(0,10)
-            test1.add_in_tail(Node(y))
-        print(test1.len())
-        test1.clean()
-        if(test1.head is None and test1.len() == 0 and test1.tail is None):
+            test.add_in_tail(Node(y))
+        print(test.len())
+        test.clean()
+        if(test.head is None and test.len() == 0 and test.tail is None):
             print("Список пустой")
-        print(test1.len())
+        print(test.len())
 
     def test_insert(self):
-        test1 = LinkedList()
+        test = LinkedList()
         v = "Вставка"
         for i in range(10):
             y = random.randint(0,10)
-            test1.add_in_tail(Node(y))
+            test.add_in_tail(Node(y))
         for i in range(20):
             y = random.randint(0,10)
-            test1.insert(y, v)
-            test1.print_all_nodes()
+            test.insert(y, v)
+            test.print_all_nodes()
+            
+    def test_insert1(self):
+        test = LinkedList()
+        v = "Вставка"
+        for i in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        test.clean()
+        for i in range(1):
+            y = random.randint(0,10)
+            test.insert(y, v)
+        test.print_all_nodes()
