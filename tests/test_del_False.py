@@ -1,3 +1,4 @@
+
 import random
 
 class Node:
@@ -53,6 +54,9 @@ class LinkedList:
         if(all is False):  
             while node != None:
                 if(leng == 0 and node.value == val):
+                    if(node.next is None):
+                        self.head = None
+                        self.tail = None
                     self.head = node.next
                     leng += 1
                     break
@@ -60,7 +64,10 @@ class LinkedList:
                     if(node.next.value == val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
+                            node = None
+                            if(self.head is None and leng == 0):
+                                self.tail = None
+                            self.tail = self.head.next
                         break
                     node = node.next
                 else:
@@ -69,15 +76,16 @@ class LinkedList:
         elif(all is True):
             while node != None:
                 if(node.next != None):
-                    if(node.next.value == val):
+                    if(leng == 0 and node.value is val):
+                        node = node.next
+                    elif(node.next.value is val):
                         node.next = node.next.next
                         if(node.next is None):
-                            self.tail = None
-                    elif(leng == 0 and node.value == val):
-                        self.head = node.next
-                        leng += 1
+                            node = None
+                            self.tail = self.head.next
                     else:
                         node = node.next
+                        leng += 1
                 else:
                     if(node.value == val):
                         self.head = None
@@ -102,7 +110,7 @@ class LinkedList:
     def insert(self, afterNode, newNode):
         if(afterNode == None or self.head == None):
             self.head = Node(newNode)
-            return
+            return self.head
         node = self.head
         newN = Node(newNode)
         while node is not None:
@@ -112,8 +120,29 @@ class LinkedList:
             node = node.next
         pass # здесь будет ваш код
 
-class my_test:         
+class my_test:
 
+    def test1_find_all(self):
+        test = LinkedList()
+        for i in range(100):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        for j in range(10):
+            y = random.randint(0,10)
+            print(test.find_all(y))
+            
+    def test2_find_all(self): 
+        test = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        test.clean()
+        n = 1
+        for j in range(1):
+            y = random.randint(0,10)
+            print(n,' - ' ,test.find_all(y))
+            n += 1
+ 
     def test_del_false(self):
         test = LinkedList()
         test.add_in_tail(Node(9))
@@ -122,14 +151,120 @@ class my_test:
             print('В спсике один элемент!')
             test.print_all_nodes()
         test.delete(9)
+        print('после удаления', test.head, test.tail, test.len())
         if(test.head is None and test.tail is None and test.len() == 0):
             print('список пуст!')              
 
     def test_del_true(self):
         test = LinkedList()
-        for i in range(10):
-            test.add_in_tail(Node(5))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(0))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.delete(2, True)
         test.print_all_nodes()
-        test.delete(5, True)
         if(test.head is None and test.tail is None and test.len() == 0):
             print("Список пустой!")
+        else:
+            print('Список после удаления')
+            test.print_all_nodes()
+        
+    def test_del_true1(self):
+        test = LinkedList()
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(6))
+        test.add_in_tail(Node(2))
+        len_1 = test.len()
+        test.delete(2, True)
+        len_2 = test.len()
+        len_del = len_1 - len_2
+        if(len_del == len_1 and test.head is None and test.len() == 0 and test.tail is None):
+            print('Список пустой. Удаленно было ',len_del ,'элементов.')
+        else:
+            print('В списке осталось - ', len_2,'элементов.' , 'Удаленно было - ', len_del, 'элементов.')
+
+    def test_del_true2(self):
+        test = LinkedList()
+        test.add_in_tail(Node(0))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(2))       
+        y = 2
+        test.print_all_nodes()
+        len_1 = test.len()
+        for i in range(test.len()):
+            if(y == test.head.value and test.head.next is None):
+                print('Удалятся будет последний узел')
+        test.delete(y, True)
+        len_2 = test.len()
+        len_del = len_1 - len_2
+        for i in range(test.len()):
+            if (y != test.head.value):
+                print('Удаление последнего узла прошло успешно!')
+                break
+        test.print_all_nodes()
+        
+        print('Удаленно (',len_del,' элементов). Узла с значением -', y)
+
+    def test_del_true3(self):
+        test = LinkedList()
+        test.add_in_tail(Node(1))
+        test.add_in_tail(Node(2))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        test.add_in_tail(Node(3))
+        len_1 = test.len()
+        test.delete(3, True)
+        len_2 = test.len()
+        if (len_1 != len_2):
+            print('Общее количество элементов до удаления - ', len_1, 'оставшееся количество элементов - ', len_2)
+        if(test.len() == 2):
+            print(test.head.value, test.tail.value)        
+
+    def test_clean(self):
+        test = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        test.clean()
+        if(test.head is None and test.len() == 0 and test.tail is None):
+            print("Список пустой")
+
+
+    def test_len(self):
+        test = LinkedList()
+        for j in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        print(test.len())
+        test.clean()
+        if(test.head is None and test.len() == 0 and test.tail is None):
+            print("Список пустой")
+        print(test.len())
+
+    def test_insert(self):
+        test = LinkedList()
+        v = "Вставка"
+        for i in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        for i in range(20):
+            y = random.randint(0,10)
+            test.insert(y, v)
+            test.print_all_nodes()
+            
+    def test_insert1(self):
+        test = LinkedList()
+        v = "Вставка"
+        for i in range(10):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        test.clean()
+        for i in range(1):
+            y = random.randint(0,10)
+            test.insert(y, v)
+        test.print_all_nodes()
