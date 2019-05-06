@@ -108,18 +108,16 @@ class LinkedList:
         return self.leng # здесь будет ваш код 
 
     def insert(self, afterNode, newNode):
-        if(afterNode == None or self.head == None):
-            self.head = Node(newNode)
+        if(afterNode == None and self.head == None):
+            self.head = self.tail = Node(newNode)
         else:
-            self.tail.next = Node(newNode)
-        self.tail = Node(newNode)
-        node = self.head
-        newN = Node(newNode)
-        while node is not None:
-            if(node.value == afterNode):
-                newN.next = node.next
-                node.next = newN
-            node = node.next
+            node = self.head
+            newN = Node(newNode)
+            while node is not None:
+                if(node.value == afterNode):
+                    newN.next = node.next
+                    node.next = newN
+                node = node.next
         pass # здесь будет ваш код
 
 class my_test:
