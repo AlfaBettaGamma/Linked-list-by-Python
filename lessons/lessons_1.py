@@ -111,7 +111,6 @@ class LinkedList:
             node = self.head
             newN = newNode
             while node is not None:
-                self.tail = self.head.next
                 if(node.value == afterNode):
                     newN.next = node.next
                     node.next = newN
