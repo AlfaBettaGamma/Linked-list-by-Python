@@ -106,10 +106,10 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         if(afterNode == None and self.head == None):
-            self.head = Node(newNode)
+            self.head = self.tail = newNode
         else:
             node = self.head
-            newN = Node(newNode)
+            newN = newNode
             while node is not None:
                 self.tail = self.head.next
                 if(node.value == afterNode):

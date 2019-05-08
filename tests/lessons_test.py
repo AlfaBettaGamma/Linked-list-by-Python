@@ -109,10 +109,10 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         if(afterNode == None and self.head == None):
-            self.head = Node(newNode)
+            self.head = self.tail = newNode
         else:
             node = self.head
-            newN = Node(newNode)
+            newN = newNode
             while node is not None:
                 self.tail = self.head.next
                 if(node.value == afterNode):
@@ -255,7 +255,7 @@ class my_test:
             test.add_in_tail(Node(y))
         for i in range(20):
             y = random.randint(0,10)
-            test.insert(y, v)
+            test.insert(y, Node(v))
             test.print_all_nodes()
             
     def test_insert1(self):
@@ -267,5 +267,5 @@ class my_test:
         test.clean()
         for i in range(1):
             y = random.randint(0,10)
-            test.insert(y, v)
+            test.insert(y, Node(v))
         test.print_all_nodes()
