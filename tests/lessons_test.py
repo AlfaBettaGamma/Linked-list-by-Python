@@ -267,5 +267,5 @@ class my_test:
         test.clean()
         for i in range(1):
             y = random.randint(0,10)
-            test.insert(y, Node(v))
+            test.insert(None, Node(v))
         test.print_all_nodes()
