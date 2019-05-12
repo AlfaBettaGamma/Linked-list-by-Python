@@ -256,6 +256,9 @@ class my_test:
             y = random.randint(0,10)
             test.insert(y, Node(v))
             test.print_all_nodes()
+            print('----------------')
+            print('элемент ', '"',v,'"', 'вствлен после эллемента ', y)
+            print(' ')
             
     def test_insert1(self):
         test = LinkedList()
@@ -265,6 +268,11 @@ class my_test:
             test.add_in_tail(Node(y))
         test.clean()
         for i in range(1):
-            y = random.randint(0,10)
+            if(test.head is None and test.tail is None and test.len() == 0):
+                print("Список пустой!")
             test.insert(None, Node(v))
-        test.print_all_nodes()
+            test.print_all_nodes()
+            print('----------------')
+            print('элемент ', '"',v,'"', 'вствлен в пустой список ')
+            print(' ')
+        
