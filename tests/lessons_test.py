@@ -117,6 +117,8 @@ class LinkedList:
                 if(node.value == afterNode):
                     newN.next = node.next
                     node.next = newN
+                if(newN.next is None):
+                    self.tail = newN
                 node = node.next
         pass # здесь будет ваш код
 
@@ -275,4 +277,19 @@ class my_test:
             print('----------------')
             print('элемент ', '"',v,'"', 'вствлен в пустой список ')
             print(' ')
-        
+
+    def test_insert2(self):
+        test = LinkedList()
+        v = "Вставка"
+        for i in range(3):
+            y = random.randint(0,10)
+            test.add_in_tail(Node(y))
+        for i in range(1):
+            if(test.head is None and test.tail is None and test.len() == 0):
+                print("Список пустой!")
+            test.print_all_nodes()
+            test.insert(test.head.value, Node(v))
+            print("head - ", test.head.value," tail - ", test.tail.value)
+            test.insert(test.tail.value, Node(v))
+            print("head - ", test.head.value," tail - ", test.tail.value)
+            test.print_all_nodes()

@@ -114,5 +114,7 @@ class LinkedList:
                 if(node.value == afterNode):
                     newN.next = node.next
                     node.next = newN
+                if(newN.next is None):
+                    self.tail = newN
                 node = node.next
         pass # здесь будет ваш код
