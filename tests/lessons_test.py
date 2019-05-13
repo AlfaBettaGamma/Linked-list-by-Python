@@ -99,7 +99,7 @@ class LinkedList:
 
     def len(self):
         self.leng = 0
-        if(self.head == None):
+        if(self.head is None):
             return self.leng
         node = self.head
         while node is not None:
@@ -114,7 +114,7 @@ class LinkedList:
             node = self.head
             newN = newNode
             while node is not None:
-                if(node.value == afterNode):
+                if(node.value == afterNode.value):
                     newN.next = node.next
                     node.next = newN
                 if(newN.next is None):
@@ -288,8 +288,8 @@ class my_test:
             if(test.head is None and test.tail is None and test.len() == 0):
                 print("Список пустой!")
             test.print_all_nodes()
-            test.insert(test.head.value, Node(v))
+            test.insert(test.head, Node(v))
             print("head - ", test.head.value," tail - ", test.tail.value)
-            test.insert(test.tail.value, Node(v))
+            test.insert(test.tail, Node(v))
             print("head - ", test.head.value," tail - ", test.tail.value)
             test.print_all_nodes()
