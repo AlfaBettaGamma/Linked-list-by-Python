@@ -256,10 +256,10 @@ class my_test:
             test.add_in_tail(Node(y))
         for i in range(20):
             y = random.randint(0,10)
-            test.insert(y, Node(v))
+            test.insert(test.head, Node(v))
             test.print_all_nodes()
             print('----------------')
-            print('элемент ', '"',v,'"', 'вствлен после эллемента ', y)
+            print('элемент ', '"',v,'"', 'вствлен после эллемента ', test.head.value)
             print(' ')
             
     def test_insert1(self):
@@ -293,3 +293,4 @@ class my_test:
             test.insert(test.tail, Node(v))
             print("head - ", test.head.value," tail - ", test.tail.value)
             test.print_all_nodes()
+
